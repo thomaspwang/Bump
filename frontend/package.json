@@ -17,6 +17,7 @@
     "css-loader": "^6.4.0",
     "expo": "~43.0.0",
     "expo-status-bar": "~1.1.0",
+    "geolocation": "^0.2.0",
     "jwt-decode": "^3.1.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
