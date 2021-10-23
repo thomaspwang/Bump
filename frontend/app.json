@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "testProj",
-    "slug": "testProj",
+    "name": "bump",
+    "slug": "bump",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
