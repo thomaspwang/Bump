@@ -2,6 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const passport = require("passport");
+
+const authRouter = require('./routes/authRouter')
 
 const cors = require('cors');
 
@@ -25,5 +28,12 @@ db.on('error', (err) => {
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
+
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport")(passport);
+
+app.use('/api/auth', authRouter)
 
 module.exports = { app };
