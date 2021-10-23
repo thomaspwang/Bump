@@ -1,5 +1,5 @@
 import React from "react";
-//import { SafeAreaView, StyleSheet, TextInput } from "react-native";
+import { SafeAreaView, StyleSheet, TextInput } from "react-native";
 
 import LoginImage from '../components/Login/LoginImage'
 

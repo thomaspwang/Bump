@@ -4,7 +4,7 @@ const router = express.Router();
 const User = require("../models/User");
 // returns array of friend locations
 router.get("/friends", (req, res) => {
-    user = req.body._id
+    user = req.query._id
     friend_locs = []
     User.findOne({ _id: user}).then(user => {
         if (!user) {
@@ -14,7 +14,7 @@ router.get("/friends", (req, res) => {
                 curr = User.findOne({_id: friend.friendID})
                 friend_locs[i] = curr.location
             }
-
+            res.send(friend_locs)
         }
     });
 });

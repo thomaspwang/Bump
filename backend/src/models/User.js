@@ -21,7 +21,13 @@ let User = new Schema({
         required: true
     },
     location:{
-        type: String
+        type: []
+        /*
+        {
+            lat: int,
+            lon: int
+        }
+        */
     },
     status: {
         type: String,
