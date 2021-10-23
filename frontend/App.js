@@ -17,21 +17,6 @@ function HomeScreen() {
   );
 }
 
-// const Stack = createNativeStackNavigator();
-
-// function App() {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator initialRouteName="Messages">
-//         <Stack.Screen name="Home" component={HomeScreen} />
-//         <Stack.Screen name="Messages" component={MessagesScreen} />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
-
-// export default App;
-
 const Tab = createBottomTabNavigator();
 
 export default function App() {
@@ -44,32 +29,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-// const bottomTabNavigator = createBottomTabNavigator(
-//   {
-//     Home: {
-//       screen: HomeScreen,
-//       navigationOptions: {
-//         tabBarIcon: ({ tintColor }) => (
-//           <Icon name="map-location-dot" size={25} color={tintColor} />
-//         )
-//       }
-//     },
-//     Messages: {
-//       screen: MessagesScreen,
-//       navigationOptions: {
-//         tabBarIcon: ({ tintColor }) => (
-//           <Icon name="messages" size={25} color={tintColor} />
-//         )
-//       }
-//     }
-//   },
-//   {
-//     initialRouteName: 'Home',
-//     tabBarOptions: {
-//       activeTintColor: '#eb6e3d'
-//     }
-//   }
-// );
-
-// const AppContainer = createAppContainer(bottomTabNavigator);
