@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const passport = require("passport");
 
 const authRouter = require('./routes/authRouter')
+const locationRouter = require('./routes/locationRouter')
 
 const cors = require('cors');
 
@@ -35,5 +36,6 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 
 app.use('/api/auth', authRouter)
+app.use('/api/location', locationRouter)
 
 module.exports = { app };

@@ -3,7 +3,7 @@ const router = express.Router();
 
 const User = require("../models/User");
 // returns array of friend locations
-router.get("/friend/location", (req, res) => {
+router.get("/friends", (req, res) => {
     user = req.body._id
     friend_locs = []
     User.findOne({ _id: user}).then(user => {
@@ -11,21 +11,19 @@ router.get("/friend/location", (req, res) => {
             return res.status(400).json({ user: "User Not Found" });
         } else {
             for (i = 0; i < user.friends.length; i ++) {
-                
+                curr = User.findOne({_id: friend.friendID})
+                friend_locs[i] = curr.location
             }
 
         }
     });
 });
 
+router.post("/user", (req, res) => {
 
-// LOGIN 
-
-router.post("/user/location", (req, res) => {
-    // Form validation
     const location = req.body.location;
     const user = req.body._id
-  // Find user by email
+  // Find user 
     User.findOne({ user }).then(user => {
       // Check if user exists
       if (!user) {
