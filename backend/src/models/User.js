@@ -26,8 +26,21 @@ let User = new Schema({
     status: {
         type: String,
     },
+    profilePic: {
+        type: String,
+    },
+    
     friends: {
-        type: []
+        type: [] 
+        // list of dictionaries 
+        /*
+        {
+            friendID: "",
+            convoID: "",
+            notifNum: int,
+            lastMsg: ""
+        }
+        */
     }
     // userID: {
     //     type: String,
