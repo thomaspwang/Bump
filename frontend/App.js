@@ -6,9 +6,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import './index.scss'
+// import './index.scss'
 
-import HomeScreen from './screens/Home.js'
+import HomeScreen from './screens/HomeScreen.js'
 import LoginScreen from './screens/Login.js'
 import MessagesScreen from './screens/Messages';
 
