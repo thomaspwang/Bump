@@ -10,7 +10,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 import HomeScreen from './screens/HomeScreen.js'
 import LoginScreen from './screens/Login.js'
-import MessagesScreen from './screens/Messages';
+import MessagesScreen from './screens/MessagesScreen.js';
 
 const Tab = createBottomTabNavigator();
 

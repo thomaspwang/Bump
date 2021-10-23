@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 let Conversation = new Schema({
     members: {
-        type: [] // List of friendIds
+        type: [] // Two friendIDs
     },
     log: {
         type: []
@@ -16,6 +16,12 @@ let Conversation = new Schema({
             timestamp: "",
         }
         */
+    },
+    last_message: {
+        type: String
+    },
+    last_timestamp: {
+        type: String
     }
 });
 
