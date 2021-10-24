@@ -37,6 +37,20 @@ router.get("/friends", (req, res) => {
     });
 });
 
+router.get("user", (req, res) => {
+    user = req.query._id
+    User.findOne({ _id : user }).then(user => {
+      // Check if user exists
+      if (!user) {
+        return res.status(404).json({ usernotfound: "User not found" });
+      } else {
+        return res.json(user)    
+      }
+    
+    })
+})
+
+
 // Updates user location
 router.post("/user", (req, res) => {
 
