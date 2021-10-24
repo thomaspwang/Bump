@@ -34,7 +34,7 @@ export default function App() {
         {/* <Stack.Screen name="Register" component={RegisterScreen} /> */}
         {/* <Stack.Screen name="LoggedIn" component={LoggedIn} /> */}
         {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
-        <Tab.Screen name="Messages" component={MessagesScreen} options={{ tabBarBadge: 3 }} />
+        {/* <Tab.Screen name="Messages" component={MessagesScreen} options={{ tabBarBadge: 3 }} /> */}
         <Tab.Screen name="Profile" component={ProfileScreen} options={{ tabBarBadge: 3 }} />
       </Tab.Navigator>
     </NavigationContainer>

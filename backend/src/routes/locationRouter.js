@@ -15,8 +15,8 @@ router.get("/friends", (req, res) => {
         } else {
             User.find({_id: { $in: user.friends }}).then(arr => {
                 for (i = 0; i < arr.length; i ++) {
-                    idNameLocation = {_id: arr[i]._id, name: arr[i].name, location: arr[i].location}
-                    friend_locs.push(idNameLocation)
+                    idNameLocationPic = {_id: arr[i]._id, name: arr[i].name, location: arr[i].location, profilePic: arr[i].profilePic}
+                    friend_locs.push(idNameLocationPic)
                 }
                 res.send(friend_locs)
             })
