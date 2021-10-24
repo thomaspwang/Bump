@@ -14,58 +14,14 @@ const styles = StyleSheet.create({
 });
 
 const MessagesScreen = () => {
+
+  let friends = [];
+
+
+
   return (
     <View style={styles.page}>
-      <ChatItem
-        name='Tommy Wangasdasd'
-        img={testImage}
-        time='4:20 pm'
-        badge='5'
-        message='hey! you coming to class today?' />
-      <ChatItem
-        name='Tommy Wang'
-        img={testImage}
-        time='4:20 pm'
-        badge='5'
-        message='hey! you coming to class today?' />
-      <ChatItem
-        name='Tommy Wang'
-        img={testImage}
-        time='4:20 pm'
-        badge='5'
-        message='hey! you coming to class today?' />
-      <ChatItem
-        name='Tommy Wang'
-        img={testImage}
-        time='4:20 pm'
-        badge='5'
-        message='hey! you coming to class today?' />
-      <ChatItem
-        name='Tommy Wang'
-        img={testImage}
-        time='4:20 pm'
-        badge='5'
-        message='hey! you coming to class today?' />
-      <ChatItem
-        name='Tommy Wang'
-        img={testImage}
-        time='4:20 pm'
-        badge='5'
-        message='hey! you coming to class today?' />
-      <ChatItem
-        name='Tommy Wang'
-        img={testImage}
-        time='4:20 pm'
-        badge='5'
-        message='hey! you coming to class today?' />
-      <ChatItem
-        name='Tommy Wang'
-        img={testImage}
-        time='4:20 pm'
-        badge='5'
-        message='hey! you coming to class today?' />
     </View>
-
   );
 };
 
