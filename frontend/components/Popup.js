@@ -35,6 +35,10 @@ export default function ProfileScreen() {
                 <Text style={styles.smallText}>
                     ID: 2310231230
                 </Text>
+                <Button
+                    title="Send Notification"
+                    color="#000000"
+                />
             </View>
         </View>
     )
@@ -75,5 +79,9 @@ const styles = StyleSheet.create({
     },
     background: {
         backgroundColor: "#F5ECDF"
+    },
+    button: {
+        borderColor="#000000",
+        borderRadius=13
     }
 });
