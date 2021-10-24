@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { SafeAreaView, StyleSheet, TextInput, Text, Button } from "react-native";
+import { SafeAreaView, StyleSheet, TextInput, Text, Button, ScrollView, KeyboardAvoidingView, Keyboard, TouchableWithoutFeedback } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import axios from 'axios'
@@ -47,10 +47,20 @@ const LoginScreen = ({navigation}) => {
   }
 
   return (
-    <SafeAreaView>
+    <KeyboardAvoidingView
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+            style={styles.container}
+        >
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                <ScrollView>
+    <SafeAreaView
+        style={styles.view}
+    >
       <Text
         style={{
-          fontWeight: '700'
+          fontWeight: '700',
+          fontSize: 60,
+          marginTop:150
         }}
       >
         Bump
@@ -71,10 +81,13 @@ const LoginScreen = ({navigation}) => {
       <Button
         onPress={handleLogin}
         title="Login"
-        color="#841584"
+        color="#000000"
         accessibilityLabel="Learn more about this purple button"
       />
     </SafeAreaView>
+    </ScrollView>
+            </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
   );
 };
 
@@ -83,8 +96,15 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 12,
     borderWidth: 1,
+    borderRadius: 13,
     padding: 10,
+    width:"70%"
   },
+  view: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+  }
 });
 
 export default LoginScreen;

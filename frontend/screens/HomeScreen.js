@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import * as Location from "expo-location";
 
 import {SafeAreaView, StyleSheet, StatusBar, View, Text, Dimensions} from 'react-native';
-import MapView, {Marker} from 'react-native-maps';
+import MapView, {Marker, PROVIDER_GOOGLE} from 'react-native-maps';
 import axios from 'axios'
 import {useAtom} from 'jotai'
 import {idAtom} from '../atoms'
@@ -12,23 +12,59 @@ export default function HomeScreen({ navigation }) {
   const [errorMsg, setErrorMsg] = useState(null);
   const [coordinates, setCoordinates] = useState([]);
   const [selectedID, setSelectedID] = useState("")
+  const [region, setRegion] = useState(null)
   const [userID] = useAtom(idAtom)
+  const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
+  const centroid = {
+    latitude: "24.2472",
+    longitude: "89.920914"
+}
+
+  /*useEffect(() => {
     (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
+      let { status } = await Location.requestForegroundPermissionsAsync().error(error => console.log('error'));
       if (status !== "granted") {
         console.log('cannot get perms')
         return;
       }
 
       let location = await Location.getCurrentPositionAsync({});
-      console.log(local)
-      setLocation(location)
+      if (location != null) {
+        setLocation(location)
+        setUserLocation()
+      } else {
+        setLocation(centroid)
+      }
+      //setRegion(location)
+      setLoading(false)
     })();
+  }, []);*/
 
+  if (location == null) {
+    console.log('set dummy location')
+    setLocation(centroid)
+  }
+
+  useEffect(() => {
+    /*
+    (async () => {
+
+      let location = await Location.getCurrentPositionAsync({});
+      if (location != null) {
+        setLocation(location)
+        setUserLocation()
+      } else {
+        setLocation(centroid)
+      }
+      //setRegion(location)
+      setLoading(false)
+    })();
+    */
     getFriendLocation();
-  }, []);
+    setUserLocation();
+  })
+
 
   async function getFriendLocation() {
     await axios.get(`https://d6ae-157-131-140-153.ngrok.io/api/location/friends?_id=${userID}`).then(response => {
@@ -36,7 +72,19 @@ export default function HomeScreen({ navigation }) {
     }).catch(error => console.log(error))
   }
 
-  console.log(location)
+  async function setUserLocation() {
+    await axios.post(`https://d6ae-157-131-140-153.ngrok.io/api/location/user`, {
+      _id: userID,
+      location: {
+        latitude: location.latitude,
+        longitude: location.longitude
+      }
+      
+    }).then(response => {
+        const hi = response.data
+    }).catch(error => console.log(error))
+  }
+
 
     const onSelectPoint = event => {
       console.log(event)
@@ -45,13 +93,8 @@ export default function HomeScreen({ navigation }) {
       };
 
     function onRegionChange(region) {
-      setState({ location });
+      setRegion(region)
     }
-
-    const centroid = {
-      latitude: "24.2472",
-      longitude: "89.920914"
-  }
   const boundingBox = {
       southWest: {
           latitude: "24.234631",
@@ -68,36 +111,38 @@ export default function HomeScreen({ navigation }) {
     const southwestLat = parseFloat(boundingBox.southWest.latitude);
     const latDelta = northeastLat - southwestLat;
     const lngDelta = latDelta * ASPECT_RATIO;
+    console.log(coordinates)
   return (
     <>
           <StatusBar barStyle="dark-content" />
           <SafeAreaView>
             <View style={styles.container}>
-              <MapView style={styles.map}
-              onPress={event => {
-                region={location}
-                onRegionChange={onRegionChange}
-              }}
-              initialRegion={{
-                latitude: location.latitude,
-                longitude: location.longitude,
-                latitudeDelta: latDelta,
-                longitudeDelta: lngDelta,
-              }}
-              >
+              
+<MapView style={styles.map}
+provider = {PROVIDER_GOOGLE}
+                region={region}
+                onRegionChange={onRegionChange}   >
 
-                { /*
+  
+
+                { 
                     // have something where you click -- takes u to friend profile
                 coordinates.map((friend, index) => (
                     <Marker
-                        coordinate={{ latitude : friend.location.latitude, longitude : friend.location.longitute }}
-                        image={{uri: friend.image}}
+                        coordinate={{ latitude : friend.location.latitude, longitude : friend.location.longitude }}
+                        image={{uri: friend.profilePic}}
                         onSelect={onSelectPoint}
-                        title={friend.name}
-                    />
+                        key={friend.name}
+                />
                 ))
                     
-                */}
+                }
+                
+                <Marker
+                        coordinate={{ latitude : 24.259769, longitude : 89.934692 }}
+                        onSelect={onSelectPoint}
+                        key="hi"
+                    />
 
               </MapView>
               </View>
