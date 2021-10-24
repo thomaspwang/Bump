@@ -4,14 +4,18 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Conversation = new Schema({
+    _id: { //concatenated
+        type: String,
+    },
     members: {
-        type: [] // Two friendIDs
+        type: [] // Two Ids
     },
     log: {
         type: []
         // list of dictionaries 
         /*
         {
+            id: ""
             message: "",
             timestamp: "",
         }
