@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     badgeContainer: {
-        backgroundColor: '#3777f0',
+        backgroundColor: '#F84F31',
         width: 20,
         height: 20,
         borderRadius: 10,
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         top: 10,
     },
     badgeText: {
-        color: 'white',
+        color: 'transparent',
         fontSize: 12
     },
     rightContainer: {
