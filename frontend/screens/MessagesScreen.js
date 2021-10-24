@@ -93,6 +93,7 @@ export default function MessagesScreen() {
     let friend = friendsList[i];
     let result = {}
     result['name'] = friend.name;
+    result['profilepic'] = friend.profilePic
     result['last_message'] = friend['convo']['convo.last_message'];
     result['last_timestamp'] = friend['convo']['convo.last_timestamp'];
     friends_array.push(result);

@@ -15,8 +15,8 @@ router.get("/friends", (req, res) => {
         } else {
             User.find({_id: { $in: user.friends }}).then(arr => {
                 for (i = 0; i < arr.length; i ++) {
-                    idNameLocation = {_id: arr[i]._id, name: arr[i].name, location: arr[i].location}
-                    friend_locs.push(idNameLocation)
+                    idNameLocationPic = {_id: arr[i]._id, name: arr[i].name, location: arr[i].location, profilePic: arr[i].profilePic}
+                    friend_locs.push(idNameLocationPic)
                 }
                 res.send(friend_locs)
             })
@@ -36,6 +36,20 @@ router.get("/friends", (req, res) => {
         }
     });
 });
+
+router.get("user", (req, res) => {
+    user = req.query._id
+    User.findOne({ _id : user }).then(user => {
+      // Check if user exists
+      if (!user) {
+        return res.status(404).json({ usernotfound: "User not found" });
+      } else {
+        return res.json(user)    
+      }
+    
+    })
+})
+
 
 // Updates user location
 router.post("/user", (req, res) => {
