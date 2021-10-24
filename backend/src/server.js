@@ -6,12 +6,14 @@ const passport = require("passport");
 
 const authRouter = require('./routes/authRouter')
 const locationRouter = require('./routes/locationRouter')
+const messageRouter = require('./routes/messageRouter')
 
 const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(cors());
 
 const port = process.env.PORT ? process.env.PORT : 4000;
@@ -37,5 +39,6 @@ require("./config/passport")(passport);
 
 app.use('/api/auth', authRouter)
 app.use('/api/location', locationRouter)
+app.use('/api/message', messageRouter)
 
 module.exports = { app };

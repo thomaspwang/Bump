@@ -4,14 +4,18 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let Conversation = new Schema({
+    _id: { //concatenated
+        type: String,
+    },
     members: {
-        type: [] // Two friendIDs
+        type: [] // Two Ids
     },
     log: {
         type: []
         // list of dictionaries 
         /*
         {
+            id: ""
             message: "",
             timestamp: "",
         }
@@ -25,4 +29,4 @@ let Conversation = new Schema({
     }
 });
 
-module.exports = mongoose.model('Convo', Convo);
+module.exports = mongoose.model('Conversation', Conversation);
