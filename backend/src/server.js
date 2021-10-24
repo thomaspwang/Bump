@@ -45,29 +45,21 @@ app.use('/api/message', messageRouter)
 // Websocket server
 const WebSocket = require('ws')
 
-//const WebSocketServer = require("ws").Server;
-//const wss = new WebSocketServer({host:'localhost', port: 8080 });
-
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-
 clients = {}
-console.log(wss.address())
 wss.on('connection', function connection(ws, request) {
-  console.log('connected!')
+  console.log('new client connection')
   var str = request.url
   clients[str.substring(1)] = ws 
-  //console.log(str.substring(1))
-  //console.log(clients)
-  //console.log(wss.clients)
   ws.on('message', function incoming(message) {
     
     message = JSON.parse(message)
-    //console.log(message.friendid)
     client = clients[message.friendid]
-    console.log(client)
-    client.send(JSON.stringify({"_id" : message._id, "time" : message.time, "message" : message.message, "friendid":  message.friendid}));
+    if (client != null) {
+      client.send(JSON.stringify({"_id" : message._id, "time" : message.time, "message" : message.message, "friendid":  message.friendid}));
+    }
   });
 
 });
