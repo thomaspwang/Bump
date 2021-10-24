@@ -33,8 +33,19 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator >
         {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
-        <Tab.Screen name="Messages" component={MessagesScreen} options={{ tabBarBadge: 3 }} />
-        <Tab.Screen name="Profile" component={ProfileScreen} options={{ tabBarBadge: 3 }} />
+        <Tab.Screen name="Messages" component={MessagesScreen} options={{
+          tabBarBadge: 10,
+          tabBarLabel: "Messages",
+          tabBarIcon: () => (
+            <Icon name="comment-o" color='grey' size={25} />
+          )
+        }} />
+        <Tab.Screen name="Profile" component={ProfileScreen} options={{
+          tabBarLabel: "Profile",
+          tabBarIcon: () => (
+            <Icon name="user" color='grey' size={25} />
+          )
+        }} />
       </Tab.Navigator>
     </NavigationContainer>
     // {/* // <NavigationContainer>

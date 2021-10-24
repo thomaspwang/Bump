@@ -5,53 +5,53 @@ import Friendtab from '../components/friendtab.js'
 
 export default function ProfileScreen() {
 
-    [friends, setFriends] = useState([])
-    useEffect(() => {
-        getFriends()
-    })
+    // [friends, setFriends] = useState([])
+    // useEffect(() => {
+    //     getFriends()
+    // })
 
 
-    async function getFriends() {
-        await axios.get(process.env.REACT_APP_SERVER_URL + `/api/location/friends?_id=${id}`).then(response => {
-            setFriends(response.data)
-        }
-        )
-    }
+    // async function getFriends() {
+    //     await axios.get(process.env.REACT_APP_SERVER_URL + `/api/location/friends?_id=${id}`).then(response => {
+    //         setFriends(response.data)
+    //     }
+    //     )
+    // }
 
-    function Friend({ name, picture }) {
-        return (
-            <View style={[styles.card, styles.shadowProp]}>
-                <Avatar
-                    activeOpacity={0.2}
-                    avatarStyle={{}}
-                    containerStyle={{
-                        backgroundColor: "#CBDFBD",
-                        alignSelf: 'center',
-                    }}
-                    icon={{}}
-                    iconStyle={{}}
-                    imageProps={{}}
-                    onLongPress={() => alert("onLongPress")}
-                    onPress={() => alert("onPress")}
-                    overlayContainerStyle={{}}
-                    placeholderStyle={{}}
-                    rounded
-                    size="large"
-                    // source={{ uri: "" }}
-                    source={picture}
-                    title="P"
-                    titleStyle={{}}
-                />
-                <View style={styles.textContainer}>
-                    <View>
-                        <Text style={styles.heading}>
-                            {name}
-                        </Text>
-                    </View>
-                </View>
-            </View>
-        )
-    }
+    // function Friend({ name, picture }) {
+    //     return (
+    //         <View style={[styles.card, styles.shadowProp]}>
+    //             <Avatar
+    //                 activeOpacity={0.2}
+    //                 avatarStyle={{}}
+    //                 containerStyle={{
+    //                     backgroundColor: "#CBDFBD",
+    //                     alignSelf: 'center',
+    //                 }}
+    //                 icon={{}}
+    //                 iconStyle={{}}
+    //                 imageProps={{}}
+    //                 onLongPress={() => alert("onLongPress")}
+    //                 onPress={() => alert("onPress")}
+    //                 overlayContainerStyle={{}}
+    //                 placeholderStyle={{}}
+    //                 rounded
+    //                 size="large"
+    //                 // source={{ uri: "" }}
+    //                 source={picture}
+    //                 title="P"
+    //                 titleStyle={{}}
+    //             />
+    //             <View style={styles.textContainer}>
+    //                 <View>
+    //                     <Text style={styles.heading}>
+    //                         {name}
+    //                     </Text>
+    //                 </View>
+    //             </View>
+    //         </View>
+    //     )
+    // }
 
     const [value, setValue] = React.useState("");
 
@@ -75,7 +75,7 @@ export default function ProfileScreen() {
                     rounded
                     size="large"
                     // source={{ uri: "" }}
-                    source={{ uri: 'https://i.imgur.com/RXCIqcq.jpg' }}
+                    source={{ uri: 'https://i.imgur.com/wH3hfLX.jpg' }}
                     title="P"
                     titleStyle={{}}
                 />

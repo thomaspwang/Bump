@@ -3,8 +3,9 @@ import { SafeAreaView, StatusBar, View, Image, Text, StyleSheet, FlatList } from
 import ChatItem from '../components/ChatItem/ChatItem';
 import axios from 'axios';
 import { setGoogleApiKey } from 'expo-location';
+import { imageList } from '../components/imageList.js'
 
-const ngrok = 'http://6738-157-131-140-153.ngrok.io';
+const ngrok = 'http://40ab-157-131-140-153.ngrok.io';
 
 export default function MessagesScreen() {
   // const id = '617484bd5aacc003a9e6fa3e';
@@ -93,8 +94,7 @@ export default function MessagesScreen() {
     let friend = friendsList[i];
     let result = {}
     result['name'] = friend.name;
-    result['profilepic'] = friend['convo']['profilePic']
-    console.log(friend)
+    result['profilepic'] = imageList[friend.name];
     result['last_message'] = friend['convo']['convo.last_message'];
     result['last_timestamp'] = friend['convo']['convo.last_timestamp'];
     friends_array.push(result);
