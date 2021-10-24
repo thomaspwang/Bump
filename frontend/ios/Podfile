@@ -1,0 +1,12 @@
+platform :ios, '14.6'
+source 'https://github.com/CocoaPods/Specs.git'
+
+pre_install do |installer|
+    $RNMBGL.pre_install(installer)
+  end
+
+  post_install do |installer|
+    $RNMBGL.post_install(installer)
+  end
+
+ pod 'react-native-mapbox-gl', :path => '../node_modules/@react-native-mapbox-gl/maps'
