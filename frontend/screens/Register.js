@@ -45,13 +45,15 @@ const RegisterScreen = ({ navigation }) => {
         >
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <ScrollView>
-                    <SafeAreaView>
+                    <SafeAreaView style={styles.view}>
                         <Text
                             style={{
-                                fontWeight: '700'
-                            }}
+                                fontWeight: '700',
+                                fontSize: 60,
+                                marginTop:100
+                              }}
                         >
-                            Register for Bump
+                            Register
                         </Text>
                         <Button
                             onPress={navigation.navigate('Home')}
@@ -87,7 +89,7 @@ const RegisterScreen = ({ navigation }) => {
                         <Button
                             onPress={handleRegister}
                             title="Register"
-                            color="#841584"
+                            color="#000000"
                             accessibilityLabel="Learn more about this purple button"
                         />
                     </SafeAreaView>
@@ -102,8 +104,15 @@ const styles = StyleSheet.create({
         height: 40,
         margin: 12,
         borderWidth: 1,
+        borderRadius: 13,
         padding: 10,
-    },
+        width:"70%"
+      },
+      view: {
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+      },
     container: {
         flex: 1
     },
