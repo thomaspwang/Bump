@@ -13,7 +13,7 @@ export default function MessagesScreen() {
   // const [friends, setFriends] = useState([])
   console.log("AWEAWDAHIWDIAWHDAWDAWIDHIAWDAHIWDIDIH")
 
-  const id = '617447c0317bb912994c04ea';
+  const id = '617550615a7cbe5f93474144';
   const [friendsList, setFriendsList] = useState([])
   const endpoint = ngrok + '/api/location/friends' + `?_id=${id}`
 
