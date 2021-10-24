@@ -8,6 +8,7 @@
     "proxy": "http://localhost:4000"
   },
   "dependencies": {
+    "1201": "^1.0.0",
     "@react-native-community/cli-platform-ios": "^6.1.0",
     "@react-native-mapbox-gl/maps": "^8.4.0",
     "@react-navigation/bottom-tabs": "^6.0.9",
@@ -22,8 +23,8 @@
     "expo-modules-autolinking": "^0.3.3",
     "expo-splash-screen": "~0.13.3",
     "expo-status-bar": "~1.1.0",
-    "fs": "0.0.1-security",
     "expo-updates": "~0.10.5",
+    "fs": "0.0.1-security",
     "geolocation": "^0.2.0",
     "jotai": "^1.4.1",
     "jwt-decode": "^3.1.2",
