@@ -37,7 +37,7 @@ router.get("/friends", (req, res) => {
     });
 });
 
-router.get("user", (req, res) => {
+router.get("/user", (req, res) => {
     user = req.query._id
     User.findOne({ _id : user }).then(user => {
       // Check if user exists
