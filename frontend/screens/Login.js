@@ -48,43 +48,43 @@ const LoginScreen = ({navigation}) => {
 
   return (
     <SafeAreaView>
-        <Text
-            style={{
-                fontWeight:'700'
-            }}
-        >
-            Bump
-        </Text>
-        <LoginImage />
-        <TextInput
-            style={styles.input}
-            onChangeText={setEmail}
-            value={email}
-            placeholder="Email"
-        />
-        <TextInput
-            style={styles.input}
-            onChangeText={setPassword}
-            value={password}
-            placeholder="Password"
-        />
-        <Button
-            onPress={handleLogin}
-            title="Login"
-            color="#841584"
-            accessibilityLabel="Learn more about this purple button"
-        />
+      <Text
+        style={{
+          fontWeight: '700'
+        }}
+      >
+        Bump
+      </Text>
+      <LoginImage />
+      <TextInput
+        style={styles.input}
+        onChangeText={setEmail}
+        value={email}
+        placeholder="Email"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={setPassword}
+        value={password}
+        placeholder="Password"
+      />
+      <Button
+        onPress={handleLogin}
+        title="Login"
+        color="#841584"
+        accessibilityLabel="Learn more about this purple button"
+      />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-    input: {
-      height: 40,
-      margin: 12,
-      borderWidth: 1,
-      padding: 10,
-    },
-  });
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
+});
 
 export default LoginScreen;
