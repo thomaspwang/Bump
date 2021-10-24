@@ -29,7 +29,7 @@ router.get("/conversation", (req, res) => {
             User.findOne({ _id: friendID }).then(friend => {
                 friend_name = friend.name;
                 convo_info = {
-                    "user": user, "friendID": friendID, "friend_name": friend_name,
+                    "user": user, "friendID": friendID, "friend_name": friend_name, "profilePic":  friend.profilePic,
                     "convo.last_message": convo.last_message, "convo.last_timestamp": convo.last_timestamp,
                     "convo.log": convo.log
                 };
