@@ -19,6 +19,7 @@
     "expo": "~43.0.0",
     "expo-location": "~13.0.4",
     "expo-status-bar": "~1.1.0",
+    "fs": "0.0.1-security",
     "geolocation": "^0.2.0",
     "jwt-decode": "^3.1.2",
     "react": "17.0.1",
@@ -37,7 +38,9 @@
     "style-loader": "^3.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "eslint": "^8.1.0",
+    "eslint-plugin-react": "^7.26.1"
   },
   "private": true
 }

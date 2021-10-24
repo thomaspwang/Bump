@@ -71,9 +71,8 @@ router.post("/conversation", (req, res) => {
             // save convo and upload
             newConvo.save(function (err) {
                 if (err) return handleError(err);
+                newConvo => res.json(newConvo)
             })
-                .then(newConvo => res.json(newConvo))
-                .catch(err => console.log(err));
             // convo exists, add new req to log    
         } else {
             convo.log.push(req.body);
