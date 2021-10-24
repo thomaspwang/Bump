@@ -3,8 +3,9 @@ import { Text, Image, View, StyleSheet } from 'react-native';
 import styles from './styles';
 
 export default function ChatItem({ Conversation, User, notifCount }) {
+
     return (
-        <View style={styles.container}>
+        <View style={styles.container}>axious
             <Image source={require('./dummy.jpg')} style={styles.image} />
 
             {chatRoom.newMessages && <View style={styles.badgeContainer}>
