@@ -3,8 +3,9 @@ import { Text, Image, View, StyleSheet } from 'react-native';
 import styles from './styles';
 
 export default function ChatItem({ Friend }) {
+    
     return (
-        <View style={styles.container}>
+        <View style={styles.container}>axious
             <Image source={require('./dummy.jpg')} style={styles.image} />
 
             {0 && <View style={styles.badgeContainer}>

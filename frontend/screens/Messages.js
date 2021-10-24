@@ -43,9 +43,9 @@ export default async function MessagesScreen() {
       // };
     }
 
-const styles = StyleSheet.create({
-      page: {
-        backgroundColor: 'white',
-        flex: 1
-      }
-    });
+// const styles = StyleSheet.create({
+//       page: {
+//         backgroundColor: 'white',
+//         flex: 1
+//       }
+// });
