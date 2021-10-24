@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Conversation = require("../models/Conversation");
+const User = require("../models/User");
 
 // get friend name
 
@@ -27,12 +28,11 @@ router.get("/conversation", (req, res) => {
         } else {
             User.findOne({_id: friendID}).then(friend => {
                 friend_name = friend.name;
+                convo_info = {"user": user, "friendID": friendID, "friend_name": friend_name, 
+                "convo.last_message": convo.last_message, "convo.last_timestamp": convo.last_timestamp, 
+                "convo.log": convo.log};
+                res.send(convo_info);
             });
-
-            convo_info = {"user": user, "friendID": friendID, "friend_name": friend_name, 
-            "convo.last_message": convo.last_message, "convo.last_timestamp": convo.last_timestamp, 
-            "convo.log": convo.log};
-            res.send(convo_info);
         }
     })
 })
