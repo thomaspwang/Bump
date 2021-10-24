@@ -29,4 +29,4 @@ let Conversation = new Schema({
     }
 });
 
-module.exports = mongoose.model('Convo', Convo);
+module.exports = mongoose.model('Conversation', Conversation);
