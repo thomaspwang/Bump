@@ -3,7 +3,6 @@ const router = express.Router();
 
 const User = require("../models/User");
 const Conversation = require("../models/Conversation");
-const User = require("../models/User");
 
 // get friend name
 
