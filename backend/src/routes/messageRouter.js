@@ -1,9 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
+const User = require("../models/User");
 const Conversation = require("../models/Conversation");
+const User = require("../models/User");
 
-// get request = get the history of chat
+// get friend name
+
+
+// get request = get all info from conversation
 router.get("/conversation", (req, res) => {
 
     user = req.query._id;
@@ -22,7 +27,15 @@ router.get("/conversation", (req, res) => {
         if (!convo) {
             return res.status(400).json({ user: "Conversation Not Found" });
         } else {
-            res.send(convo);
+            User.findOne({ _id: friendID }).then(friend => {
+                friend_name = friend.name;
+                convo_info = {
+                    "user": user, "friendID": friendID, "friend_name": friend_name,
+                    "convo.last_message": convo.last_message, "convo.last_timestamp": convo.last_timestamp,
+                    "convo.log": convo.log
+                };
+                res.send(convo_info);
+            });
         }
     })
 })
