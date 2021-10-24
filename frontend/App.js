@@ -22,7 +22,6 @@ function LoggedIn({ navigation }) {
    return (
      <Tab.Navigator >
        <Tab.Screen name="Home" component={HomeScreen} />
-       <Tab.Screen name="Messages" component={MessagesScreen} options={{ tabBarBadge: 3 }} />
        {/* <Tab.Screen name="Messages" component={MessagesScreen} options={{ tabBarBadge: 3 }} /> */}
        <Tab.Screen name="Profile" component={ProfileScreen} options={{ tabBarBadge: 3 }} />
      </Tab.Navigator>

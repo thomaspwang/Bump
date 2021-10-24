@@ -1,89 +1,106 @@
 import React, { useState, useEffect } from "react";
 import * as Location from "expo-location";
 
-import {SafeAreaView, StyleSheet, StatusBar, View, Text} from 'react-native';
-import MapboxGL from '@react-native-mapbox-gl/maps';
+import {SafeAreaView, StyleSheet, StatusBar, View, Text, Dimensions} from 'react-native';
+import MapView, {Marker} from 'react-native-maps';
 import axios from 'axios'
-
-MapboxGL.setAccessToken(
-  'sk.eyJ1IjoiZW1tYWd1byIsImEiOiJja3Y0YjJiOGk4b3lzMnFxNjZ4bWZhcHp2In0.w8EqSYP60fMo6DVxYRcOcA',
-);
+import {useAtom} from 'jotai'
+import {idAtom} from '../atoms'
 
 export default function HomeScreen({ navigation }) {
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [coordinates, setCoordinates] = useState(null);
-  const [selectedPoint, setSelectedPoint] = useState(null);
+  const [coordinates, setCoordinates] = useState([]);
+  const [selectedID, setSelectedID] = useState("")
+  const [userID] = useAtom(idAtom)
 
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
       if (status !== "granted") {
-        setErrorMsg("Permission to access location was denied");
+        console.log('cannot get perms')
         return;
       }
 
       let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
+      console.log(local)
+      setLocation(location)
     })();
+
+    getFriendLocation();
   }, []);
 
-  let text = "Waiting..";
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-    console.log(location);
+  async function getFriendLocation() {
+    await axios.get(`https://d6ae-157-131-140-153.ngrok.io/api/location/friends?_id=${userID}`).then(response => {
+      setCoordinates(response.data)
+    }).catch(error => console.log(error))
   }
 
-    const onSelectPoint = event => {
-        setCoordinates(event.geometry.coordinates);
-        setSelectedPoint(event.properties.id);
-        // TODO: navigate
-      };
-    // TODO: get user ID
-    // get friends
-    //const id = 'hi'
-    //const friend_locs = await axios.get(process.env.REACT_APP_SERVER_URL + `?_id=${id}`)
+  console.log(location)
 
+    const onSelectPoint = event => {
+      console.log(event)
+        //setSelectedID(event.properties.id);
+        // TODO: popup
+      };
+
+    function onRegionChange(region) {
+      setState({ location });
+    }
+
+    const centroid = {
+      latitude: "24.2472",
+      longitude: "89.920914"
+  }
+  const boundingBox = {
+      southWest: {
+          latitude: "24.234631",
+          longitude: "89.907127"
+      },
+      northEast: {
+          latitude: "24.259769",
+          longitude: "89.934692"
+      }
+  }
+  const { width, height } = Dimensions.get('window');
+    const ASPECT_RATIO = width / height;
+    const northeastLat = parseFloat(boundingBox.northEast.latitude);
+    const southwestLat = parseFloat(boundingBox.southWest.latitude);
+    const latDelta = northeastLat - southwestLat;
+    const lngDelta = latDelta * ASPECT_RATIO;
   return (
     <>
           <StatusBar barStyle="dark-content" />
           <SafeAreaView>
             <View style={styles.container}>
-              <MapboxGL.MapView style={styles.map}
+              <MapView style={styles.map}
               onPress={event => {
-                setCoordinates(event.geometry.coordinates);
-                setSelectedPoint(null);
+                region={location}
+                onRegionChange={onRegionChange}
+              }}
+              initialRegion={{
+                latitude: location.latitude,
+                longitude: location.longitude,
+                latitudeDelta: latDelta,
+                longitudeDelta: lngDelta,
               }}
               >
-                <MapboxGL.Camera
-                  zoomLevel={8}
-                  centerCoordinate={[-94.5786, 39.0997]}
-                />
-                {
+
+                { /*
                     // have something where you click -- takes u to friend profile
-                friend_locs.map((friend, index) => (
-                    <MapboxGL.PointAnnotation
-                        id={friend.name}
-                        coordinate={friend.location}
-                        onSelected={onSelectPoint}
+                coordinates.map((friend, index) => (
+                    <Marker
+                        coordinate={{ latitude : friend.location.latitude, longitude : friend.location.longitute }}
+                        image={{uri: friend.image}}
+                        onSelect={onSelectPoint}
+                        title={friend.name}
                     />
                 ))
                     
-                }
+                */}
 
-              </MapboxGL.MapView>
-              {coordinates ? (
-            <View style={styles.coordinateViewContainer}>
-              <View style={styles.coordinateView}>
-                <Text>
-                  {coordinates[0]}, {coordinates[1]}
-                </Text>
+              </MapView>
               </View>
-            </View>
-          ) : null}
-            </View>
           </SafeAreaView>
         </>
   );

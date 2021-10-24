@@ -1,23 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import { SafeAreaView, StyleSheet, TextInput, Text, Button } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import axios from 'axios'
+import {useAtom} from 'jotai'
+import {idAtom} from '../atoms'
 
 import LoginImage from '../components/Login/LoginImage'
 
 const LoginScreen = ({navigation}) => {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [userID, setUserID] = useAtom(idAtom)
 
   async function handleLogin(){
-      await axios.post('https://b5c0-136-152-143-135.ngrok.io/api/auth/login', {
+      await axios.post('https://d6ae-157-131-140-153.ngrok.io/api/auth/login', {
         email: email,
         password: password
       }).then((response) => {
         if (response.data.success) {
             // TODO: move to home page
             console.log('login success')
+            setUserID(response.data.id)
             navigation.navigate('LoggedIn')
         } else if (response.data.emailnotfound) {
             navigation.navigate('Register')

@@ -13,7 +13,7 @@ const RegisterScreen = ({ navigation }) => {
   const [name, setName] = React.useState("");
 
   async function handleRegister () {
-      await axios.post('https://b5c0-136-152-143-135.ngrok.io/api/auth/register', {
+      await axios.post('https://d6ae-157-131-140-153.ngrok.io/api/auth/register', {
         name: name,
         email: email,
         password: password,
